@@ -349,16 +349,16 @@ function goTo(s) {
   render();
 }
 
-// Playback speed in jumps per second, remembered per browser.
-let playRate = 1;
+// Seconds between replayed jumps, remembered per browser.
+let playDelay = 2;
 try {
-  const r = parseFloat(localStorage.getItem('minikrone-speed'));
-  if (r >= 0.5 && r <= 4) playRate = r;
+  const d = parseFloat(localStorage.getItem('minikrone-delay'));
+  if (d >= 0.5 && d <= 5) playDelay = d;
 } catch (e) { /* storage unavailable */ }
 
 function showSpeed() {
-  $('speed').value = playRate;
-  $('speed-value').textContent = t('speedValue', { s: fmt1(1 / playRate) });
+  $('speed').value = playDelay;
+  $('speed-value').textContent = t('speedValue', { s: fmt1(playDelay) });
 }
 
 function togglePlay() {
@@ -368,19 +368,19 @@ function togglePlay() {
     $('play-btn').innerHTML = ICON_PLAY;
   } else if (solution) {
     if (step >= solution.moves.length) goTo(0);
-    playTimer = setInterval(() => goTo(step + 1), 1000 / playRate);
+    playTimer = setInterval(() => goTo(step + 1), playDelay * 1000);
     $('play-btn').innerHTML = ICON_PAUSE;
   }
 }
 
 $('speed').addEventListener('input', e => {
-  playRate = parseFloat(e.target.value);
-  try { localStorage.setItem('minikrone-speed', playRate); } catch (err) { /* ignore */ }
+  playDelay = parseFloat(e.target.value);
+  try { localStorage.setItem('minikrone-delay', playDelay); } catch (err) { /* ignore */ }
   showSpeed();
   if (playTimer) {
     // restart at the new pace
     clearInterval(playTimer);
-    playTimer = setInterval(() => goTo(step + 1), 1000 / playRate);
+    playTimer = setInterval(() => goTo(step + 1), playDelay * 1000);
   }
 });
 
