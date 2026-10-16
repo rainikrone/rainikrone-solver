@@ -355,7 +355,7 @@ function togglePlay() {
   } else if (solution) {
     if (step >= solution.moves.length) goTo(0);
     playTimer = setInterval(() => goTo(step + 1), 650);
-    $('play-btn').textContent = '⏸';
+    $('play-btn').textContent = '❚❚';
   }
 }
 
@@ -395,6 +395,7 @@ $('reset-btn').onclick = () => { grid = defaultGrid(); start = E.CENTER; startSt
 $('first-btn').onclick = () => goTo(0);
 $('prev-btn').onclick = () => goTo(step - 1);
 $('next-btn').onclick = () => goTo(step + 1);
+$('last-btn').onclick = () => solution && goTo(solution.moves.length);
 $('play-btn').onclick = togglePlay;
 $('close-btn').onclick = () => closeSolution(false);
 $('resolve-btn').onclick = () => closeSolution(true);

@@ -18,7 +18,7 @@
     </section>
 
     <aside class="panel">
-      <div id="lang" class="flags" role="group" aria-label="Langue / Language / Idioma">
+      <div id="lang" class="flags" role="group" aria-label="Langue / Language / Idioma / Sprache / Idioma">
         <button data-lang="fr" title="Français" aria-label="Français">
           <svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce1126"/></svg>
         </button>
@@ -34,6 +34,12 @@
         </button>
         <button data-lang="es" title="Español" aria-label="Español">
           <svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#aa151b"/><rect y=".5" width="3" height="1" fill="#f1bf00"/></svg>
+        </button>
+        <button data-lang="de" title="Deutsch" aria-label="Deutsch">
+          <svg viewBox="0 0 5 3" preserveAspectRatio="none"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#dd0000"/><rect y="2" width="5" height="1" fill="#ffce00"/></svg>
+        </button>
+        <button data-lang="pt" title="Português" aria-label="Português">
+          <svg viewBox="0 0 20 14" preserveAspectRatio="none"><rect width="20" height="14" fill="#009c3b"/><polygon points="10,1.6 18.4,7 10,12.4 1.6,7" fill="#ffdf00"/><circle cx="10" cy="7" r="3.4" fill="#002776"/></svg>
         </button>
       </div>
       <div class="card">
@@ -66,11 +72,12 @@
       <div class="card" id="solution-card" hidden>
         <h2><span data-i18n="route"></span> <span id="route-len" class="muted"></span></h2>
         <div id="turns"></div>
-        <div class="row">
-          <button id="first-btn" class="ghost" data-i18n-title="btn.first">⏮</button>
-          <button id="prev-btn" class="ghost" data-i18n-title="btn.prev">◀</button>
+        <div class="row controls">
+          <button id="first-btn" class="ghost" data-i18n-title="btn.first">«</button>
+          <button id="prev-btn" class="ghost" data-i18n-title="btn.prev">‹</button>
           <button id="play-btn" class="ghost" data-i18n-title="btn.play">▶</button>
-          <button id="next-btn" class="ghost" data-i18n-title="btn.next">▶|</button>
+          <button id="next-btn" class="ghost" data-i18n-title="btn.next">›</button>
+          <button id="last-btn" class="ghost" data-i18n-title="btn.last">»</button>
         </div>
         <p class="step-text" id="step-text"></p>
         <div class="row">
