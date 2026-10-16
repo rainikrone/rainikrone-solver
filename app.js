@@ -2,6 +2,8 @@ const E = createEngine();
 const { N, SIZE, HOLE, EMPTY, YELLOW, RED, GREEN, BLACK, PINK, DR, DC } = E;
 
 const ARROWS = ['↗', '↘', '↙', '↖'];
+const ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>';
+const ICON_PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 5H10v14H6.5zM14 5h3.5v14H14z"/></svg>';
 const COLOR_KEYS = { [EMPTY]: 'empty', [YELLOW]: 'yellow', [RED]: 'red', [GREEN]: 'green', [BLACK]: 'black', [PINK]: 'pink' };
 const colorName = c => t('color.' + COLOR_KEYS[c]);
 const letter = c => t('letters')[c] || '';
@@ -347,17 +349,40 @@ function goTo(s) {
   render();
 }
 
+// Playback speed in jumps per second, remembered per browser.
+let playRate = 1;
+try {
+  const r = parseFloat(localStorage.getItem('minikrone-speed'));
+  if (r >= 0.5 && r <= 4) playRate = r;
+} catch (e) { /* storage unavailable */ }
+
+function showSpeed() {
+  $('speed').value = playRate;
+  $('speed-value').textContent = t('speedValue', { s: fmt1(1 / playRate) });
+}
+
 function togglePlay() {
   if (playTimer) {
     clearInterval(playTimer);
     playTimer = null;
-    $('play-btn').textContent = '▶';
+    $('play-btn').innerHTML = ICON_PLAY;
   } else if (solution) {
     if (step >= solution.moves.length) goTo(0);
-    playTimer = setInterval(() => goTo(step + 1), 650);
-    $('play-btn').textContent = '❚❚';
+    playTimer = setInterval(() => goTo(step + 1), 1000 / playRate);
+    $('play-btn').innerHTML = ICON_PAUSE;
   }
 }
+
+$('speed').addEventListener('input', e => {
+  playRate = parseFloat(e.target.value);
+  try { localStorage.setItem('minikrone-speed', playRate); } catch (err) { /* ignore */ }
+  showSpeed();
+  if (playTimer) {
+    // restart at the new pace
+    clearInterval(playTimer);
+    playTimer = setInterval(() => goTo(step + 1), 1000 / playRate);
+  }
+});
 
 function closeSolution(useCurrent) {
   if (playTimer) togglePlay();
@@ -402,6 +427,7 @@ $('resolve-btn').onclick = () => closeSolution(true);
 document.querySelectorAll('#lang button').forEach(b => (b.onclick = () => setLang(b.dataset.lang)));
 
 document.addEventListener('keydown', e => {
+  if (e.target.matches('input')) return; // arrow keys move the speed slider
   if (solution) {
     if (e.key === 'ArrowRight') goTo(step + 1);
     else if (e.key === 'ArrowLeft') goTo(step - 1);
@@ -416,6 +442,6 @@ load();
 buildBoard();
 onLangChange(() => {
   document.querySelectorAll('#lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
-  buildPalette(); refreshTexts(); render();
+  buildPalette(); refreshTexts(); showSpeed(); render();
 });
 applyI18n();

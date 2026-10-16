@@ -89,7 +89,12 @@ details.card summary { cursor: pointer; font-weight: 600; }
 details.card[open] summary { margin-bottom: 8px; }
 
 .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-.controls button { flex: 1; padding: 6px 0; font-size: 18px; line-height: 1; }
+.controls button { flex: 1; padding: 7px 0; line-height: 0; }
+.controls svg { width: 18px; height: 18px; fill: currentColor; }
+.controls .chev { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.speed { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.speed input { flex: 1; min-width: 0; accent-color: var(--accent); }
+#speed-value { min-width: 9ch; text-align: right; color: var(--text); }
 button {
   font: inherit;
   color: var(--text);

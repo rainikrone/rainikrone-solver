@@ -73,12 +73,17 @@
         <h2><span data-i18n="route"></span> <span id="route-len" class="muted"></span></h2>
         <div id="turns"></div>
         <div class="row controls">
-          <button id="first-btn" class="ghost" data-i18n-title="btn.first">«</button>
-          <button id="prev-btn" class="ghost" data-i18n-title="btn.prev">‹</button>
-          <button id="play-btn" class="ghost" data-i18n-title="btn.play">▶</button>
-          <button id="next-btn" class="ghost" data-i18n-title="btn.next">›</button>
-          <button id="last-btn" class="ghost" data-i18n-title="btn.last">»</button>
+          <button id="first-btn" class="ghost" data-i18n-title="btn.first"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2.5v14H6z"/><path d="M19 5v14L9.5 12z"/></svg></button>
+          <button id="prev-btn" class="ghost" data-i18n-title="btn.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="chev" d="M15 5l-7 7 7 7"/></svg></button>
+          <button id="play-btn" class="ghost" data-i18n-title="btn.play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
+          <button id="next-btn" class="ghost" data-i18n-title="btn.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="chev" d="M9 5l7 7-7 7"/></svg></button>
+          <button id="last-btn" class="ghost" data-i18n-title="btn.last"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5H18v14h-2.5z"/><path d="M5 5v14l9.5-7z"/></svg></button>
         </div>
+        <label class="speed">
+          <span data-i18n="speed"></span>
+          <input type="range" id="speed" min="0.5" max="4" step="0.25" value="1">
+          <span id="speed-value"></span>
+        </label>
         <p class="step-text" id="step-text"></p>
         <div class="row">
           <button id="resolve-btn" class="ghost" data-i18n="btn.resolve" data-i18n-title="btn.resolveTitle"></button>
