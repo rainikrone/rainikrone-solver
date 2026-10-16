@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solveur Rainikrone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section class="board-wrap">
+      <header>
+        <h1 data-i18n="title"></h1>
+        <p class="sub" data-i18n="sub"></p>
+      </header>
+      <svg id="board" data-i18n-aria="boardLabel"></svg>
+      <p class="hint" id="hint"></p>
+    </section>
+
+    <aside class="panel">
+      <div id="lang" class="flags" role="group" aria-label="Langue / Language / Idioma">
+        <button data-lang="fr" title="Français" aria-label="Français">
+          <svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce1126"/></svg>
+        </button>
+        <button data-lang="en" title="English" aria-label="English">
+          <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice">
+            <clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+            <rect width="60" height="30" fill="#012169"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#c8102e" stroke-width="4"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6"/>
+          </svg>
+        </button>
+        <button data-lang="es" title="Español" aria-label="Español">
+          <svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#aa151b"/><rect y=".5" width="3" height="1" fill="#f1bf00"/></svg>
+        </button>
+      </div>
+      <div class="card">
+        <h2 data-i18n="shot.title"></h2>
+        <p class="muted small" data-i18n-html="shot.desc"></p>
+        <div class="row">
+          <button id="shot-choose" class="ghost" data-i18n="shot.choose"></button>
+          <input type="file" id="shot-file" accept="image/*" hidden>
+        </div>
+      </div>
+
+      <div class="card" id="edit-card">
+        <h2 data-i18n="paint"></h2>
+        <div class="palette" id="palette"></div>
+        <div class="row">
+          <button id="fill-btn" class="ghost" data-i18n="fill"></button>
+          <button id="fill-empty-btn" class="ghost" data-i18n="fillEmpty"></button>
+          <button id="reset-btn" class="ghost" data-i18n="reset"></button>
+        </div>
+      </div>
+
+      <div class="solve-bar">
+        <div class="solve-row">
+          <button id="solve-btn" class="primary big" data-i18n="solve"></button>
+          <button id="cancel-btn" class="ghost" data-i18n="cancel" hidden></button>
+        </div>
+        <p class="status" id="status"></p>
+      </div>
+
+      <div class="card" id="solution-card" hidden>
+        <h2><span data-i18n="route"></span> <span id="route-len" class="muted"></span></h2>
+        <div id="turns"></div>
+        <div class="row">
+          <button id="first-btn" class="ghost" data-i18n-title="btn.first">⏮</button>
+          <button id="prev-btn" class="ghost" data-i18n-title="btn.prev">◀</button>
+          <button id="play-btn" class="ghost" data-i18n-title="btn.play">▶</button>
+          <button id="next-btn" class="ghost" data-i18n-title="btn.next">▶|</button>
+        </div>
+        <p class="step-text" id="step-text"></p>
+        <div class="row">
+          <button id="resolve-btn" class="ghost" data-i18n="btn.resolve" data-i18n-title="btn.resolveTitle"></button>
+          <button id="close-btn" class="ghost" data-i18n="btn.close"></button>
+        </div>
+      </div>
+
+      <details class="card">
+        <summary data-i18n="rulesTitle"></summary>
+        <ul class="small rules" data-i18n-html="rules"></ul>
+      </details>
+    </aside>
+  </main>
+
+  <div class="modal" id="shot-modal" hidden>
+    <div class="modal-box">
+      <p id="shot-help" class="shot-help"></p>
+      <div class="shot-scroll"><canvas id="shot-canvas"></canvas></div>
+      <div class="row">
+        <button id="shot-apply" class="primary" data-i18n="shot.apply"></button>
+        <button id="shot-repick" class="ghost" data-i18n="shot.repick"></button>
+        <button id="shot-cancel" class="ghost" data-i18n="cancel"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+  <script src="screenshot.js"></script>
+</body>
+</html>
