@@ -74,7 +74,7 @@ const STRINGS = {
 
   en: {
     title: 'Rainikron Solver',
-    sub: 'Le bonheur est dans le spray: paint the glyphs, then solve.',
+    sub: 'Oh, Happy Spray! Paint the glyphs, then solve.',
     boardLabel: 'Fight board',
     'hint.paint': 'Pick a colour, then click or drag on the board.',
     'hint.replay': 'Replay: the arrow shows the next jump. Use ← → or the buttons.',
@@ -145,7 +145,7 @@ const STRINGS = {
 
   es: {
     title: 'Solucionador de Lady Urikoíris',
-    sub: 'Le bonheur est dans le spray: pinta los glifos y luego resuelve.',
+    sub: 'La felicidad está en campo rociado: pinta los glifos y luego resuelve.',
     boardLabel: 'Tablero del combate',
     'hint.paint': 'Elige un color y luego haz clic o arrastra sobre el tablero.',
     'hint.replay': 'Repetición: la flecha indica el siguiente salto. Usa ← → o los botones.',
@@ -215,7 +215,7 @@ const STRINGS = {
   },
   de: {
     title: 'Regenbogen-Einohr-Löser',
-    sub: 'Le bonheur est dans le spray: Glyphen einfärben, dann lösen.',
+    sub: 'Sprühen vor Freude: Glyphen einfärben, dann lösen.',
     boardLabel: 'Kampffeld',
     'hint.paint': 'Wähle eine Farbe und klicke oder ziehe dann über das Spielfeld.',
     'hint.replay': 'Wiedergabe: Der Pfeil zeigt den nächsten Sprung. Nutze ← → oder die Knöpfe.',
@@ -286,7 +286,7 @@ const STRINGS = {
 
   pt: {
     title: 'Solucionador Iriskrônia',
-    sub: 'Le bonheur est dans le spray: pinte os glifos e depois resolva.',
+    sub: 'Spray de felicidade: pinte os glifos e depois resolva.',
     boardLabel: 'Tabuleiro do combate',
     'hint.paint': 'Escolha uma cor e clique ou arraste sobre o tabuleiro.',
     'hint.replay': 'Reprodução: a seta mostra o próximo salto. Use ← → ou os botões.',
